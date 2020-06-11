@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  node:
+    image: node:10.16.0
+    working_dir: /app
+    restart: always
+    links:
+     - mongo
+     - mongo-express
+    expose: 
+    - "3000"
+    ports:
+     - "3000:3000"
+    command: bash -c "mkdir -p /app && npm install && npm start"
+    volumes :
+    - ./:/app
+
+  mongo:
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+ 
