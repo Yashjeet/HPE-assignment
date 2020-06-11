@@ -19,6 +19,7 @@ module.exports = async (req, res, next) => {
         .populate("comments.commentedBy").populate("comments.replies.repliedBy").execPopulate()));
 
     if (error) {
+        logger.error('Failed tp create a reply on comment', error);
         next(error);
     }
     else {

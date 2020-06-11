@@ -20,10 +20,11 @@ module.exports = async (req, res, next) => {
             .populate("comments.replies.repliedBy").execPopulate()));
 
     if (error) {
+        logger.error("Failed to comment on order", error);
         next(error);
     }
     else {
-        const newlyPushedComment =  result.comments.pop();
+        const newlyPushedComment = result.comments.pop();
         res.send({
             status: true,
             entity: newlyPushedComment,

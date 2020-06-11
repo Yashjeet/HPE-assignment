@@ -11,6 +11,7 @@ module.exports = async (req, res, next) => {
         .then(t => t.populate('comments.commentedBy')
             .populate('comments.replies.repliedBy').execPopulate()));
     if (error) {
+        logger.error('failed to get all comments on order with reply', error);
         next(error);
     }
     else {

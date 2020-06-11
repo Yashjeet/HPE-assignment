@@ -8,6 +8,7 @@ const get = async (req, res, next) => {
     let [error, result] = await promiseHandler(UserModel.find());
 
     if (error) {
+        logger.error('Failed to get all users', error);
         next(error);
     }
     else {

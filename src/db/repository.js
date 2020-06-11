@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 var url = "mongodb://mongo:27017/assignment";
 
-mongoose.connect(url, { useNewUrlParser: true }, function (err, db) {
+mongoose.connect(url, { useNewUrlParser: true }, function (err) {
     if (err) throw err;
-    console.log("Database created!");
+    else {
+        console.log(`Database created!`);
+    }
 });

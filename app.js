@@ -1,7 +1,6 @@
 const express = require('express');
 require('./src/db/repository');
 const port = 3000;
-
 const app = express();
 
 app.use(express.json());
@@ -18,7 +17,7 @@ app.use((req, res) => {
     res.send("Resource not found")
 });
 
-app.use((next, req, res) => {
+app.use((error, req, res) => {
     res.status(500)
     res.send("Something went wrong!")
 });

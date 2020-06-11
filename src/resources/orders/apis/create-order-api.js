@@ -12,6 +12,7 @@ module.exports = async (req, res, next) => {
     });
     const [error, result] = await promiseHandler(order.save().then(t => t.populate('createdBy').execPopulate()));
     if (error) {
+        logger.error('Failed to create an order', error);
         next(error);
     }
     else {

@@ -14,6 +14,7 @@ const post = async (req, res, next) => {
 
     const [error, result] = await promiseHandler(user.save());
     if (error) {
+        logger.error('Failed to create user', error);
         next(error);
     }
     else {
