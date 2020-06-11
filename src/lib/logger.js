@@ -23,7 +23,7 @@ if (!logger) {
         transports: [
             transport
         ],
-        exitOnError: false /
+        exitOnError: false 
     });
 }
 

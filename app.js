@@ -13,7 +13,7 @@ app.use('/users', UserRoutes);
 app.use('/orders', OrderRoutes);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404)
     res.send("Resource not found")
 });
